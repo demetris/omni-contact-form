@@ -38,9 +38,10 @@ class Crypto
     *   @since 0.1.3
     *   @author blade (Matúš Koprda)
     *   @see https://stackoverflow.com/questions/3422759
+    *   @return string|null
     *
     */
-    public function decrypt(string $strings, string $password): string {
+    public function decrypt(string $strings, string $password) {
         if (!extension_loaded('openssl')) {
             return '0';
         }
