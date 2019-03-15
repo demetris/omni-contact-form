@@ -1,0 +1,14 @@
+# Composer
+/vendor/
+
+# Node: Dependency directories
+node_modules/
+
+# Sublime Text: Workspace files are user-specific
+*.sublime-workspace
+
+# Windows: Thumbnail cache files
+Thumbs.db
+
+# Window: Folder config file
+[Dd]esktop.ini

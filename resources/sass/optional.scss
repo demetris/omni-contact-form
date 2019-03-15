@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+
+$color-error: #DC3545;
+
+
+.ocf {
+    input {
+        display: block;
+    }
+
+    input[type="email"],
+    input[type="text"] {
+        min-width: 288px;
+    }
+
+    input[type="number"] {
+        width: 3.5em;
+        text-align: center;
+    }
+
+    label {
+        margin-bottom: 0.5rem;
+    }
+
+    noscript {
+        font-weight: bold;
+    }
+
+    .ocf-required {
+    }
+
+    .ocf-alert {
+        opacity: 1;
+
+        transition: opacity 187.5ms ease;
+
+        margin-left: 1rem;
+
+        color: $color-error;
+
+        &.is-fading-out {
+            opacity: 0;
+        }
+    }
+
+    .has-error {
+        border-color: $color-error !important;
+
+        box-shadow: 0 0 0 0.125rem $color-error !important;
+        box-shadow: 0 0 0 1px $color-error !important;
+
+        background-color: #fdf3f4 !important;
+    }
+
+    .form-group-submit {
+        margin-top: 2rem;
+    }
+
+    .ocf-progress {
+        margin-left: 1rem;
+        vertical-align: middle;
+    }
+}
+
+.widget {
+    .ocf {
+        input[type="email"],
+        input[type="text"] {
+            min-width: 0;
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+        }
+    }
+}
+
+.ocf-messages {
+    .ocf-message {
+        font-weight: bold;
+    }
+}
+
+.ocf-message-copy {
+    h1 {
+        &.ocf-message-copy-element {
+            font-size: 1.5rem;
+        }
+    }
+
+    &.is-fading-in {
+    }
+}
+
+.ocf-fade-in {
+    animation: fade-in 0.250s forwards;
+}
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@media only screen and (min-width: 992px) {
+    .ocf input[type="email"],
+    .ocf input[type="text"] {
+        max-width: 50%;
+    }
+    .widget .ocf input[type="email"], .widget
+    .ocf input[type="text"] {
+        width: 100%;
+    }
+}
+
+
+@media print {
+    //
+    //
+    //  @see https://stackoverflow.com/questions/468881
+    //
+    //
+    body {
+        max-height: 1024px;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    body > header,
+    body > footer {
+        display: none !important;
+    }
+
+    .ocf-message-copy,
+    .ocf-message-copy-element {
+        visibility: visible;
+    }
+
+    .ocf-message-copy {
+    //  position: absolute;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+}

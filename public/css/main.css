@@ -1,0 +1,17 @@
+.ocf label {
+    display: inline-block;
+}
+
+.ocf .ocf-progress.is-visible {
+    display: inline-block !important;
+}
+
+.ocf input[type="number"]::-webkit-outer-spin-button,
+.ocf input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ocf input[type="number"] {
+    -moz-appearance: textfield;
+}
