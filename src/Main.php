@@ -33,7 +33,7 @@ class Main
     *
     *   @wp-action rest_api_init
     *
-    *   @since 0.3.0
+    *   @since 0.1.0
     *   @return void
     *
     */
