@@ -28,15 +28,15 @@ class Quiz
         $this->p  = $this->a * $this->b;
     }
 
-    public function getA() {
+    public function getA(): int {
         return $this->a;
     }
 
-    public function getB() {
+    public function getB(): int {
         return $this->b;
     }
 
-    public function getProduct() {
+    public function getProduct(): int {
         return $this->p;
     }
 }
