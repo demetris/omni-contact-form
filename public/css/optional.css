@@ -1,4 +1,5 @@
-.ocf input {
+.ocf input,
+.ocf textarea {
     display: block;
 }
 
