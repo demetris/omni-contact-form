@@ -11,13 +11,13 @@ class Handler
     *
     *   Handles the data of the form that is submitted to the REST endpoint
     *
-    *   NOTES
-    *   -   No need to check the nonce explicitly: The REST API does it automatically
-    *   -   No need to return after wp_send_json(): wp_send_json() concludes with wp_die() when doing Ajax
-    * 
+    *   NOTE
+    *   There is no need to return after wp_send_json():
+    *   wp_send_json() concludes with wp_die() when doing Ajax.
+    *
     *   @since 0.1.0
     *   @return void
-    * 
+    *
     */
     public function dispatch(\WP_REST_Request $request) {
         if ($this->validate($request) !== true) {
@@ -41,14 +41,29 @@ class Handler
         $alerts = [];
         $feedback = [];
         $malefactors = [];
+        $nonce = [];
+
+        /*
+        |
+        |   NOTE
+        |   The automatic nonce verification by the WordPress REST API relies on cookies.
+        |   It works for logged-in users but not for visitors.
+        |
+        */
+        if (!isset($request['ocf-nonce']) || !wp_verify_nonce($request['ocf-nonce'], 'ocf')) {
+            $nonce[] = 'invalid';
+            $feedback['nonce'] = $nonce;
+
+            return $feedback;
+        }
 
         if (
-                !empty($request['phone'])
-                ||  mb_strlen($request['message']) > 2048
-                ||  mb_strlen($request['subject']) > 128
-                ||  mb_strlen($request['email']) > 128
-                ||  mb_strlen($request['name']) > 128
-            ) {
+            !empty($request['phone'])
+            ||  mb_strlen($request['message']) > 2048
+            ||  mb_strlen($request['subject']) > 128
+            ||  mb_strlen($request['email']) > 128
+            ||  mb_strlen($request['name']) > 128
+        ) {
             sleep(1);
 
             $malefactors[] = 'malefactor';

@@ -170,7 +170,11 @@ function submitForm(form: HTMLFormElement) {
         xhr.addEventListener('load', function () {
             response = JSON.parse(xhr.responseText);
 
-            if (xhr.status === 200 && response.success === false) {
+            if (xhr.status === 200 && response.nonce) {
+                addMessage(OCF['nonce-error']);
+            }
+
+            else if (xhr.status === 200 && response.success === false) {
                 addMessage(OCF['mail-error']);
             }
 

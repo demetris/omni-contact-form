@@ -30,7 +30,6 @@ class Form
             'required-text'         => '',
 
             'prompt-text'           => __('Send a message to get in touch!', 'omni-contact-form'),
-            'thank-you'             => __('Thank you for your message!', 'omni-contact-form'),
 
             'email-label'           => __('Email address', 'omni-contact-form'),
             'message-label'         => __('Message', 'omni-contact-form'),
@@ -52,8 +51,10 @@ class Form
 
             'mail-error'            => __('Mail error: Could not send the message.', 'omni-contact-form'),
             'network-error'         => __('Network error: Could not connect to the server.', 'omni-contact-form'),
-            'nonce-error'           => __('Something went wrong! Please wait 1 minute and try again!', 'omni-contact-form'),
+            'nonce-error'           => __('Something went wrong! Please refresh the page and try again!', 'omni-contact-form'),
             'old-browser'           => __('To use this form, please visit the page with a newer browser.', 'omni-contact-form'),
+
+            'thank-you'             => __('Thank you for your message!', 'omni-contact-form'),
 
             'nonce'                 => wp_create_nonce('wp_rest'),
             'receiver'              => rest_url('omni/v1/post')
