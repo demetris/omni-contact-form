@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Omni Contact Form\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Omni-Contact-"
 "Form\n"
-"POT-Creation-Date: 2019-03-15 05:38+0200\n"
+"POT-Creation-Date: 2019-03-17 00:17+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,177 +22,177 @@ msgstr ""
 msgid "Send a message to get in touch!"
 msgstr ""
 
-#: Form.php:33
-msgid "Thank you for your message!"
-msgstr ""
-
-#: Form.php:35
+#: Form.php:34
 msgid "Email address"
 msgstr ""
 
-#: Form.php:36
+#: Form.php:35
 msgid "Message"
 msgstr ""
 
-#: Form.php:37
+#: Form.php:36
 msgid "Name"
 msgstr ""
 
-#: Form.php:38
+#: Form.php:37
 msgid "Sending..."
 msgstr ""
 
-#: Form.php:39
+#: Form.php:38
 msgid "Send"
 msgstr ""
 
-#: Form.php:40
+#: Form.php:39
 msgid "Subject"
 msgstr ""
 
-#: Form.php:42
+#: Form.php:41
 msgid "The answer is missing!"
 msgstr ""
 
-#: Form.php:43
+#: Form.php:42
 msgid "The answer is wrong!"
 msgstr ""
 
-#: Form.php:44
+#: Form.php:43
 msgid "The email address is not valid!"
 msgstr ""
 
-#: Form.php:45
+#: Form.php:44
 msgid "The email address is missing!"
 msgstr ""
 
-#: Form.php:46
+#: Form.php:45
 msgid "The message is missing!"
 msgstr ""
 
-#: Form.php:47
+#: Form.php:46
 msgid "The message must have at least 12 characters!"
 msgstr ""
 
-#: Form.php:48
+#: Form.php:47
 msgid "The name is missing!"
 msgstr ""
 
-#: Form.php:49
+#: Form.php:48
 msgid "The name must have at least 4 characters!"
 msgstr ""
 
-#: Form.php:50
+#: Form.php:49
 msgid "The subject is missing!"
 msgstr ""
 
-#: Form.php:51
+#: Form.php:50
 msgid "The subject must have at least 4 characters!"
 msgstr ""
 
-#: Form.php:53
+#: Form.php:52
 msgid "Mail error: Could not send the message."
 msgstr ""
 
-#: Form.php:54
+#: Form.php:53
 msgid "Network error: Could not connect to the server."
 msgstr ""
 
-#: Form.php:55
-msgid "Something went wrong! Please wait 1 minute and try again!"
+#: Form.php:54
+msgid "Something went wrong! Please refresh the page and try again!"
 msgstr ""
 
-#: Form.php:56
+#: Form.php:55
 msgid "To use this form, please visit the page with a newer browser."
 msgstr ""
 
-#: Form.php:294
+#: Form.php:57
+msgid "Thank you for your message!"
+msgstr ""
+
+#: Form.php:295
 #, php-format
 msgid "What is %d × %d?"
 msgstr ""
 
-#: Mail.php:33
+#: Mail.php:35
 msgid "NONE"
 msgstr ""
 
-#: Mail.php:41
+#: Mail.php:43
 #, php-format
 msgid ""
 "Post ID %s given in attribute REDIRECT does not exist. No redirect "
 "performed."
 msgstr ""
 
-#: Mail.php:47
+#: Mail.php:49
 #, php-format
 msgid "User ID %s given in attribute TO does not exist. Default used."
 msgstr ""
 
-#: Mail.php:56
+#: Mail.php:59
 #, php-format
 msgid ""
 "User ID %s given in attribute CC does not exist. Carbon copy not sent."
 msgstr ""
 
-#: Mail.php:95
-#, php-format
-msgid "Copy of your message to %s"
-msgstr ""
-
-#: Mail.php:98
+#: Mail.php:104
 #, php-format
 msgid "Message to %s from %s"
 msgstr ""
 
-#: Mail.php:107
+#: Mail.php:112
 msgid "WARNINGS"
 msgstr ""
 
-#: Mail.php:107
+#: Mail.php:112
 msgid "WARNING"
 msgstr ""
 
-#: Mail.php:119
+#: Mail.php:129
 msgid "SENDER"
 msgstr ""
 
-#: Mail.php:123
+#: Mail.php:133
 #, php-format
 msgid "Name: %s"
 msgstr ""
 
-#: Mail.php:126
+#: Mail.php:136
 #, php-format
 msgid "Email address: %s"
 msgstr ""
 
-#: Mail.php:130
+#: Mail.php:140
 msgid "SUBJECT"
 msgstr ""
 
-#: Mail.php:137
+#: Mail.php:147
 msgid "MESSAGE"
 msgstr ""
 
-#: Mail.php:143
+#: Mail.php:153
 msgid "FORM INFO"
 msgstr ""
 
-#: Mail.php:146
+#: Mail.php:156
 #, php-format
 msgid "Form URL: %s"
 msgstr ""
 
-#: Mail.php:148
+#: Mail.php:158
 #, php-format
 msgid "Referrer URL: %s"
 msgstr ""
 
-#: Mail.php:150
+#: Mail.php:160
 #, php-format
 msgid "Time: %1$s %2$s (%3$s)"
 msgstr ""
 
-#: Mail.php:167
+#: Mail.php:177
 #, php-format
 msgid "Email sent from %s via the Omni Contact Form"
+msgstr ""
+
+#: Mail.php:247
+#, php-format
+msgid "Copy of your message to %s"
 msgstr ""
