@@ -299,7 +299,7 @@ class Form
             $form .= '<span id="ocf-alert-answer" class="ocf-alert">' . esc_html($alert) . '</span>';
             $form .= '</label>' . "\n";
             $form .= '<input id="ocf-answer" type="number" name="answer" value="" max="20">' . "\n";
-            $form .= '<input type="hidden" name="product" value="' . esc_attr($quiz->getProduct()) . '" />' . "\n";
+            $form .= '<input type="hidden" name="product" value="' . esc_attr((string) $quiz->getProduct()) . '" />' . "\n";
             $form .= '</p>' . "\n";
         }
 

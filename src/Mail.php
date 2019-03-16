@@ -51,7 +51,7 @@ class Mail
 
         if (isset($data['cc'])) {
             foreach ($data['cc'] as $key => $ID) {
-                if (get_userdata($ID) === false) {
+                if (get_userdata((int) $ID) === false) {
                     $warnings[] = sprintf(
                         esc_html__('User ID %s given in attribute CC does not exist. Carbon copy not sent.', 'omni-contact-form'), $ID
                     );
