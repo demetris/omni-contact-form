@@ -4,6 +4,8 @@ Omni Contact Form
 
 Omni Contact Form is a WordPress plugin for people who want a basic contact form. It aims to be light and simple to use.
 
+[Changelog](CHANGELOG.md)
+
 
 
 Features
