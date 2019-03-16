@@ -4,7 +4,10 @@ namespace OmniContactForm;
 
 class Mail
 {
+    private $site = '';
+
     public function __construct() {
+        $this->site = get_bloginfo('name');
     }
 
     /**
@@ -14,8 +17,7 @@ class Mail
     *   @since 0.1.0
     *
     *   TODO
-    *   2019-03-09. Maybe remove this method and move all its work to Mail::compose().
-    *   2019-03-09. Maybe move just the WARNINGS part to Mail::compose().
+    *   2019-03-09. Maybe move the WARNINGS part to Mail::compose().
     *
     */
     private function sanitize(\WP_REST_Request $request): array {
@@ -25,17 +27,17 @@ class Mail
         $crypto = new Crypto;
         $main = new Main;
 
-        $data['cc']             = isset($request['cc']) ? explode(',', $crypto->decrypt($request['cc'], $main->password)) : null;
+        $data['cc']             = isset($request['cc']) ? array_map('trim', explode(',', $crypto->decrypt($request['cc'], $main->password))) : null;
         $data['email']          = sanitize_email($request['email']);
         $data['home']           = esc_url($request['home']);
         $data['message']        = sanitize_textarea_field($request['message']);
         $data['name']           = isset($request['name']) ? sanitize_text_field($request['name']) : null;
         $data['referrer']       = isset($request['referrer']) ? esc_url($request['referrer']) : esc_html__('NONE', 'omni-contact-form');
         $data['subject']        = isset($request['subject']) ? sanitize_text_field($request['subject']) : null;
-        $data['to']             = isset($request['to']) ? $crypto->decrypt($request['to'], $$main->password) : null;
+        $data['to']             = isset($request['to']) ? $crypto->decrypt($request['to'], $main->password) : null;
 
         if (isset($request['redirect-warning'])) {
-            $redirect = sanitize_text_field($request['redirect']);
+            $redirect = ($request['redirect']);
 
             $warnings[] = sprintf(
                 esc_html__('Post ID %s given in attribute REDIRECT does not exist. No redirect performed.', 'omni-contact-form'), $redirect
@@ -46,6 +48,7 @@ class Mail
             $warnings[] = sprintf(
                 esc_html__('User ID %s given in attribute TO does not exist. Default used.', 'omni-contact-form'), $data['to']
             );
+
             unset($data['to']);
         }
 
@@ -55,6 +58,7 @@ class Mail
                     $warnings[] = sprintf(
                         esc_html__('User ID %s given in attribute CC does not exist. Carbon copy not sent.', 'omni-contact-form'), $ID
                     );
+
                     unset($data['cc'][$key]);
                 }
             }
@@ -72,30 +76,49 @@ class Mail
     *   @since 0.1.0
     *
     */
-    private function compose(array $data, string $type = ''): array {
-        $msg = [];
+    private function compose(array $data): array {
+        $message = [];
 
-        $msg['to']          = '';
-        $msg['subject']     = '';
-        $msg['body']        = '';
-        $msg['footer']      = '';
-        $msg['warnings']    = '';
-        $msg['headers']     = [];
+        $message['to']          = '';
+        $message['subject']     = '';
+        $message['warnings']    = '';
+        $message['body']        = '';
+        $message['footer']      = '';
+        $message['headers']     = [];
 
-        $site               = get_bloginfo('name');
-        $sender             = $data['name'] ?? $data['email'];
-        $domain             = preg_replace('|https?://|', '', get_home_url());
+        $sender                 = $data['name'] ?? $data['email'];
+        $domain                 = preg_replace('|https?://|', '', get_home_url());
 
         /*
         |
-        |   Set up TO and SUBJECT for email message
+        |   Set up TO for email message
         |
         */
-        if ($type === 'copy') {
-            $msg['subject'] = sprintf(esc_html__('Copy of your message to %s', 'omni-contact-form'), $site);
-        } else {
-            $msg['to'] = isset($data['to']) ? get_userdata((int) $data['to'])->user_email : get_option('admin_email');
-            $msg['subject'] = sprintf(esc_html__('Message to %s from %s', 'omni-contact-form'), $site, $sender);
+        $message['to'] = isset($data['to']) ? get_userdata((int) $data['to'])->user_email : get_option('admin_email');
+
+        /*
+        |
+        |   Set up SUBJECT for email message
+        |
+        */
+        $message['subject'] = sprintf(esc_html__('Message to %s from %s', 'omni-contact-form'), $this->site, $sender);
+
+        /*
+        |
+        |   Set up WARNINGS (if there are any) for email message
+        |
+        */
+        if ($data['warnings']) {
+            $heading = count($data['warnings']) > 1 ? esc_html__('WARNINGS', 'omni-contact-form') : esc_html__('WARNING', 'omni-contact-form');
+
+            $message['warnings'] .= $heading . "\n";
+            $message['warnings'] .= "\n";
+
+            foreach ($data['warnings'] as $warning) {
+                $message['warnings'] .= $warning . "\n";
+            }
+
+            $message['warnings'] .= "\n";
         }
 
         /*
@@ -103,89 +126,76 @@ class Mail
         |   Set up BODY for email message
         |
         */
-        if ($type !== 'copy' && $data['warnings']) {
-            $heading = count($data['warnings']) > 1 ? esc_html__('WARNINGS', 'omni-contact-form') : esc_html__('WARNING', 'omni-contact-form');
-
-            $msg['body'] .= $heading . "\n";
-            $msg['body'] .= "\n";
-
-            foreach ($data['warnings'] as $warning) {
-                $msg['body'] .= $warning . "\n";
-            }
-
-            $msg['body'] .= "\n";
-        }
-
-        $msg['body'] .= esc_html__('SENDER', 'omni-contact-form') . "\n";
-        $msg['body'] .= "\n";
+        $message['body'] .= esc_html__('SENDER', 'omni-contact-form') . "\n";
+        $message['body'] .= "\n";
 
         if (isset($data['name'])) {
-            $msg['body'] .= sprintf(esc_html__('Name: %s', 'omni-contact-form'), $data['name']) .  "\n";
+            $message['body'] .= sprintf(esc_html__('Name: %s', 'omni-contact-form'), $data['name']) .  "\n";
         }
 
-        $msg['body'] .= sprintf(esc_html__('Email address: %s', 'omni-contact-form'), $data['email']) . "\n";
-        $msg['body'] .= "\n";
+        $message['body'] .= sprintf(esc_html__('Email address: %s', 'omni-contact-form'), $data['email']) . "\n";
+        $message['body'] .= "\n";
 
         if (isset($data['subject'])) {
-            $msg['body'] .= esc_html__('SUBJECT', 'omni-contact-form') . "\n";
-            $msg['body'] .= "\n";
+            $message['body'] .= esc_html__('SUBJECT', 'omni-contact-form') . "\n";
+            $message['body'] .= "\n";
 
-            $msg['body'] .= $data['subject'] . "\n";
-            $msg['body'] .= "\n";
+            $message['body'] .= $data['subject'] . "\n";
+            $message['body'] .= "\n";
         }
 
-        $msg['body'] .= esc_html__('MESSAGE', 'omni-contact-form') . "\n";
-        $msg['body'] .= "\n";
+        $message['body'] .= esc_html__('MESSAGE', 'omni-contact-form') . "\n";
+        $message['body'] .= "\n";
 
-        $msg['body'] .= $data['message'] . "\n";
-        $msg['body'] .= "\n";
+        $message['body'] .= $data['message'] . "\n";
+        $message['body'] .= "\n";
 
-        $msg['body'] .= esc_html__('FORM INFO', 'omni-contact-form') . "\n";
-        $msg['body'] .= "\n";
+        $message['body'] .= esc_html__('FORM INFO', 'omni-contact-form') . "\n";
+        $message['body'] .= "\n";
 
-        $msg['body'] .= sprintf(esc_html__('Form URL: %s', 'omni-contact-form'), $data['home']) .  "\n";
+        $message['body'] .= sprintf(esc_html__('Form URL: %s', 'omni-contact-form'), $data['home']) .  "\n";
 
-        $msg['body'] .= sprintf(esc_html__('Referrer URL: %s', 'omni-contact-form'), $data['referrer']) .  "\n";
+        $message['body'] .= sprintf(esc_html__('Referrer URL: %s', 'omni-contact-form'), $data['referrer']) .  "\n";
 
-        $msg['body'] .= sprintf(esc_html__('Time: %1$s %2$s (%3$s)', 'omni-contact-form'),
+        $message['body'] .= sprintf(esc_html__('Time: %1$s %2$s (%3$s)', 'omni-contact-form'),
             current_time(get_option('date_format')),
             current_time(get_option('time_format')),
             date('c')
         );
 
-        $msg['body'] .= "\n";
+        $message['body'] .= "\n";
 
         /*
         |
         |   Set up FOOTER for email message
         |
         */
-        $msg['footer'] .= "\n";
+        $message['footer'] .= "\n";
 
-        $msg['footer'] .= '~~~~~~~~' . "\n";
+        $message['footer'] .= '~~~~~~~~' . "\n";
 
-        $msg['footer'] .= sprintf(esc_html__('Email sent from %s via the Omni Contact Form', 'omni-contact-form'), $domain);
+        $message['footer'] .= sprintf(esc_html__('Email sent from %s via the Omni Contact Form', 'omni-contact-form'), $domain);
 
         /*
         |
-        |   Set up the HEADERS for the email message:
+        |   Set up HEADERS for email message:
         |   1.  Reply-To
         |   2.  CC (may be more than one)
         |
         */
-        $msg['headers'][] = sprintf('Reply-To: <%s>', $data['email']);
+        $message['headers'][] = sprintf('Reply-To: <%s>', $data['email']);
 
         if (isset($data['cc'])) {
             foreach ($data['cc'] as $ID) {
                 $ID = (int) $ID;
 
                 if (get_userdata($ID) !== false) {
-                    $msg['headers'][] = sprintf('CC: %s', get_userdata($ID)->user_email);
+                    $message['headers'][] = sprintf('CC: %s', get_userdata($ID)->user_email);
                 }
             }
         }
 
-        return $msg;
+        return $message;
     }
 
     /**
@@ -210,7 +220,7 @@ class Mail
         if (wp_mail(
             $message['to'],
             $message['subject'],
-            $message['body'] . $message['footer'],
+            $message['warnings'] . $message['body'] . $message['footer'],
             $message['headers']
         )) {
             $success = true;
@@ -218,12 +228,12 @@ class Mail
 
         /*
         |
-        |   If wp_mail() succeeded, prepare printable copy and send it back
+        |   If wp_mail() succeeded, prepare message copy and send it back
         |
         */
         if ($success === true) {
-            $printable = [];
-            $message = $this->compose($data, 'copy');
+            $copy = [];
+            $body = [];
 
             /*
             |
@@ -234,10 +244,10 @@ class Mail
             $body = wpautop($message['body']);
             $body = str_replace('<p>', '<p class="ocf-message-copy-element">', $body);
 
-            $printable['subject'] = $message['subject'];
-            $printable['body'] = $body;
+            $copy['heading'] = sprintf(esc_html__('Copy of your message to %s', 'omni-contact-form'), $this->site);
+            $copy['body'] = $body;
 
-            wp_send_json_success($printable);
+            wp_send_json_success($copy);
         }
 
         wp_send_json_error();

@@ -161,7 +161,7 @@ function submitForm(form) {
                     form.style.minHeight = formHeight + 'px';
                     form.classList.add('ocf-fade-in');
                     removeChildren(form);
-                    form.insertAdjacentHTML('beforeend', '<h1 class="ocf-message-copy-element">' + response.data.subject + '</h1>');
+                    form.insertAdjacentHTML('beforeend', '<h1 class="ocf-message-copy-element">' + response.data.heading + '</h1>');
                     form.insertAdjacentHTML('beforeend', response.data.body);
                     form.classList.add('ocf-message-copy');
                 }

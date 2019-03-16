@@ -209,7 +209,7 @@ function submitForm(form: HTMLFormElement) {
 
                     form.insertAdjacentHTML(
                         'beforeend',
-                        '<h1 class="ocf-message-copy-element">' + response.data.subject + '</h1>'
+                        '<h1 class="ocf-message-copy-element">' + response.data.heading + '</h1>'
                     );
                     form.insertAdjacentHTML(
                         'beforeend',

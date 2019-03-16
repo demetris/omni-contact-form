@@ -154,8 +154,8 @@ class Form
         |
         */
         if ($atts['redirect']) {
-            if (get_the_permalink(intval($atts['redirect']))) {
-                $atts['redirect-url'] = get_the_permalink(intval($atts['redirect']));
+            if (get_the_permalink((int) ($atts['redirect']))) {
+                $atts['redirect-url'] = get_the_permalink((int) ($atts['redirect']));
             } else {
                 $atts['redirect-warning'] = true;
             }
@@ -237,7 +237,7 @@ class Form
             |   Put the redirect ID in a hidden input
             |
             */
-            $form .= '<input type="hidden" name="redirect" value="' . esc_url($atts['redirect']) . '" />' . "\n";
+            $form .= '<input type="hidden" name="redirect" value="' . esc_attr($atts['redirect']) . '" />' . "\n";
         }
 
         if (isset($atts['redirect-warning'])) {
