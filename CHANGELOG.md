@@ -1,4 +1,11 @@
 ﻿
+##  0.3.2 – 2019-03-17
+
+-   Fixed nonce verification for non logged-in users.
+-   Improved security by escaping HTML in text displayed via JavaScript.
+-   Improved the message for nonce errors.
+
+
 ##  0.3.1 – 2019-03-16
 
 -   Fixed an error that could break the form.

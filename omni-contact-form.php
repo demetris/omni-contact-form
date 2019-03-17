@@ -6,7 +6,7 @@
     Plugin Name:            Omni Contact Form
     Plugin URI:             https://github.com/demetris/omni-contact-form
     Description:            A simple contact form with simple shortcode settings
-    Version:                0.3.1
+    Version:                0.3.2
     Author:                 Demetris Kikizas
     Author URI:             https://kikizas.com/
     License:                GPL-2.0
