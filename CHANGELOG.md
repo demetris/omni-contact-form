@@ -1,8 +1,12 @@
 ﻿
+Omni Contact Form: Changelog
+================================================================================
+
+
 ##  0.3.2 – 2019-03-17
 
 -   Fixed nonce verification for non logged-in users.
--   Improved security by escaping HTML in text displayed via JavaScript.
+-   Improved security by escaping HTML in a few more places.
 -   Improved the message for nonce errors.
 
 
