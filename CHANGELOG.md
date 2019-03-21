@@ -3,6 +3,11 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.3.3 – 2019-03-21
+
+-   Added check to prevent non-digit input in quiz answer.
+
+
 ##  0.3.2 – 2019-03-17
 
 -   Fixed nonce verification for non logged-in users.
