@@ -4,18 +4,10 @@ namespace OmniContactForm;
 
 class Form
 {
-    public function __construct() {
-    }
+    private $defaults = [];
 
-    /**
-     *
-     *  Returns the default shortcode attributes in an array
-     *
-     *  @since 0.1.0
-     *
-     */
-    private function defaults(): array {
-        return [
+    public function __construct() {
+        $this->defaults = [
             'cc'                    => false,
             'hide-after'            => false,
             'name'                  => false,
@@ -35,13 +27,13 @@ class Form
             'message-label'         => __('Message', 'omni-contact-form'),
             'name-label'            => __('Name', 'omni-contact-form'),
             'progress-text'         => __('Sending...', 'omni-contact-form'),
-            'submit-label'          => __('Send', 'omni-contact-form'),
             'subject-label'         => __('Subject', 'omni-contact-form'),
+            'submit-label'          => __('Send', 'omni-contact-form'),
 
             'answer-empty'          => esc_html__('The answer is missing!', 'omni-contact-form'),
             'answer-wrong'          => esc_html__('The answer is wrong!', 'omni-contact-form'),
-            'email-invalid'         => esc_html__('The email address is not valid!', 'omni-contact-form'),
             'email-empty'           => esc_html__('The email address is missing!', 'omni-contact-form'),
+            'email-invalid'         => esc_html__('The email address is not valid!', 'omni-contact-form'),
             'message-empty'         => esc_html__('The message is missing!', 'omni-contact-form'),
             'message-short'         => esc_html__('The message must have at least 12 characters!', 'omni-contact-form'),
             'name-empty'            => esc_html__('The name is missing!', 'omni-contact-form'),
@@ -63,44 +55,18 @@ class Form
 
     /**
      *
-     *  TODO HERE
+     *  Sets up the form configuration
      *
-     *  1.  Handle the user shortcode config
-     *  2.  Combine user shortcode config with defaults
-     *  3.  Send result to JavaScript
-     *  4.  Return result as array to use in Form::render()
+     *  1.  Processes the user settings defined via the shortcode
+     *  2.  Combines the user settings with the defaults
+     *  3.  Sends the result to JavaScript
+     *  4.  Returns the result as array
      *
-     */
-    private function config() {
-    }
-
-    /**
-     *
-     *  Renders the form and displays the form messages
-     *
-     *  @wp-caller add_shortcode()
-     *
-     *  @since 0.1.0
+     *  @since 0.3.4
      *  @param array|string $atts Array if the shortcode has attributes, string if not.
      *
      */
-    public function render($atts): string {
-        wp_enqueue_script('ocf-main');
-
-        $main           = new Main;
-        $quiz           = new Quiz;
-        $crypto         = new Crypto;
-
-        $alert          = '';
-        $form           = '';
-        $messages       = '';
-        $printable      = '';
-
-        global $wp;
-        $home = user_trailingslashit(home_url($wp->request));
-
-        $referrer = wp_get_referer();
-
+    private function config($atts): array {
         /*
         |
         |   Normalize attribute keys supplied via the shortcode
@@ -124,7 +90,7 @@ class Form
 
         /*
         |
-        |   Convert certain user supplied values into FALSE
+        |   Convert certain user supplied values to FALSE
         |
         */
         $atts = array_map(function ($value) {
@@ -147,7 +113,7 @@ class Form
         |   Combine default values with values set by the user
         |
         */
-        $atts = shortcode_atts($this->defaults(), $atts, 'ocf');
+        $atts = shortcode_atts($this->defaults, $atts, 'ocf');
 
         /*
         |
@@ -164,17 +130,54 @@ class Form
 
         /*
         |
-        |   Make a compact copy of the attributes to pass to JavaScript
+        |   Make a compact copy of the attributes to send to JavaScript
         |
         */
         $atts_compact = array_filter($atts);
 
         /*
         |
-        |   Pass the compact copy of the attributes to JavaScript as an object
+        |   Send the compact copy of the attributes to JavaScript as an object
         |
         */
         wp_localize_script('ocf-main', 'OCF', $atts_compact);
+
+        /*
+        |
+        |   Return
+        |
+        */
+        return $atts;
+    }
+
+    /**
+     *
+     *  Renders the form and displays the form messages
+     *
+     *  @wp-caller add_shortcode()
+     *
+     *  @since 0.1.0
+     *  @param array|string $atts Array if the shortcode has attributes, string if not.
+     *
+     */
+    public function render($atts): string {
+        wp_enqueue_script('ocf-main');
+
+        $atts           = $this->config($atts);
+        
+        $main           = new Main;
+        $quiz           = new Quiz;
+        $crypto         = new Crypto;
+
+        $alert          = '';
+        $form           = '';
+        $messages       = '';
+        $copy           = '';
+
+        global $wp;
+        $home = user_trailingslashit(home_url($wp->request));
+
+        $referrer = wp_get_referer();
 
         /*
         |
@@ -200,8 +203,8 @@ class Form
         |   Add element to use for printable message copy after successful submission
         |
         */
-        $printable .= '<article id="ocf-message-copy" class="ocf-message-copy ocf-message-copy-element">';
-        $printable .= '</article>' . "\n\n";
+        $copy .= '<article id="ocf-message-copy" class="ocf-message-copy ocf-message-copy-element">';
+        $copy .= '</article>' . "\n\n";
 
         /*
         |
@@ -334,6 +337,6 @@ class Form
         |   2019-03-10. Find way to print the CSS in the document HEAD only on pages with the form.
         |
         */
-        return $messages . $printable . $form . $css;
+        return $messages . $copy . $form . $css;
     }
 }
