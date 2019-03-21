@@ -78,6 +78,7 @@ class Main
     }
 
     /**
+    *
     *   Registers the plugin JavaScript
     *
     *   @wp-action wp_enqueue_scripts
