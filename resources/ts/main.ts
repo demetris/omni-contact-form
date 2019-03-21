@@ -21,6 +21,15 @@ if ('classList' in document.documentElement && document.addEventListener) {
     document.addEventListener('DOMContentLoaded', function() {
         let form = document.getElementById('ocf') as HTMLFormElement;
         let button = document.getElementById('ocf-submit') as HTMLButtonElement;
+        let answer = document.getElementById('ocf-answer') as HTMLInputElement;
+
+        if (answer) {
+            answer.addEventListener('keyup', function() {
+                let input: string = answer.value;
+
+                answer.value = removeNonDigits(input);
+            });
+        }
 
         if (form && button) {
             button.disabled = false;
@@ -30,6 +39,17 @@ if ('classList' in document.documentElement && document.addEventListener) {
     });
 } else {
     window.alert(OCF['old-browser'])
+}
+
+/*
+|
+|   Removes input that is not digits
+|
+|   @see https://stackoverflow.com/questions/44170430
+|
+*/
+function removeNonDigits(input: string) {
+    return input.replace(/[^0-9]+/g, '');
 }
 
 /*
