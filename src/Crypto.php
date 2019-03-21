@@ -10,14 +10,14 @@ class Crypto
     }
 
     /**
-    *
-    *   Encrypts a string using openssl_encrypt()
-    *
-    *   @since 0.1.3
-    *   @author blade (Matúš Koprda)
-    *   @see https://stackoverflow.com/questions/3422759
-    *
-    */
+     *
+     *  Encrypts a string using openssl_encrypt()
+     *
+     *  @since 0.1.3
+     *  @author blade (Matúš Koprda)
+     *  @see https://stackoverflow.com/questions/3422759
+     *
+     */
     public function encrypt(string $plaintext, string $password): string {
         if (!extension_loaded('openssl')) {
             return '0';
@@ -32,15 +32,15 @@ class Crypto
     }
 
     /**
-    *
-    *   Decrypts a string from Crypto::encrypt() using openssl_decrypt()
-    *
-    *   @since 0.1.3
-    *   @author blade (Matúš Koprda)
-    *   @see https://stackoverflow.com/questions/3422759
-    *   @return string|null
-    *
-    */
+     *
+     *  Decrypts a string from Crypto::encrypt() using openssl_decrypt()
+     *
+     *  @since 0.1.3
+     *  @author blade (Matúš Koprda)
+     *  @see https://stackoverflow.com/questions/3422759
+     *  @return string|null
+     *
+     */
     public function decrypt(string $strings, string $password) {
         if (!extension_loaded('openssl')) {
             return '0';

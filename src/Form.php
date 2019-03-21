@@ -8,12 +8,12 @@ class Form
     }
 
     /**
-    *
-    *   Returns the default shortcode attributes in an array
-    *
-    *   @since 0.1.0
-    *
-    */
+     *
+     *  Returns the default shortcode attributes in an array
+     *
+     *  @since 0.1.0
+     *
+     */
     private function defaults(): array {
         return [
             'cc'                    => false,
@@ -62,28 +62,28 @@ class Form
     }
 
     /**
-    *
-    *   TODO HERE
-    *
-    *   1.  Handle the user shortcode config
-    *   2.  Combine user shortcode config with defaults
-    *   3.  Send result to JavaScript
-    *   4.  Return result as array to use in Form::render()
-    *
-    */
+     *
+     *  TODO HERE
+     *
+     *  1.  Handle the user shortcode config
+     *  2.  Combine user shortcode config with defaults
+     *  3.  Send result to JavaScript
+     *  4.  Return result as array to use in Form::render()
+     *
+     */
     private function config() {
     }
 
     /**
-    *
-    *   Renders the form and displays the form messages
-    *
-    *   @wp-caller add_shortcode()
-    *
-    *   @since 0.1.0
-    *   @param array|string $atts Array if the shortcode has attributes, string if not.
-    *
-    */
+     *
+     *  Renders the form and displays the form messages
+     *
+     *  @wp-caller add_shortcode()
+     *
+     *  @since 0.1.0
+     *  @param array|string $atts Array if the shortcode has attributes, string if not.
+     *
+     */
     public function render($atts): string {
         wp_enqueue_script('ocf-main');
 

@@ -77,13 +77,13 @@ spl_autoload_register(function($class) {
 });
 
 /**
-*
-*   Gets the plugin up and running
-*
-*   @since 0.3.0
-*   @return object
-*
-*/
+ *
+ *  Gets the plugin up and running
+ *
+ *  @since 0.3.0
+ *  @return object
+ *
+ */
 function plugin() {
     static $instance = null;
 

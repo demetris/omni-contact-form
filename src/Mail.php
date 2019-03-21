@@ -11,15 +11,16 @@ class Mail
     }
 
     /**
-    *
-    *   Sanitizes the request data
-    *
-    *   @since 0.1.0
-    *
-    *   TODO
-    *   2019-03-09. Maybe move the WARNINGS part to Mail::compose().
-    *
-    */
+     *
+     *  Sanitizes the request data
+     *
+     *  @since 0.1.0
+     *
+     *  TODO
+     *  2019-03-09
+     *  Maybe move the WARNINGS part to Mail::compose().
+     *
+     */
     private function sanitize(\WP_REST_Request $request): array {
         $data = [];
         $warnings = [];
@@ -70,12 +71,12 @@ class Mail
     }
 
     /**
-    *
-    *   Composes the email message
-    *
-    *   @since 0.1.0
-    *
-    */
+     *
+     *  Composes the email message
+     *
+     *  @since 0.1.0
+     *
+     */
     private function compose(array $data): array {
         $message = [];
 
@@ -199,13 +200,13 @@ class Mail
     }
 
     /**
-    *
-    *   Sends the email or emails
-    *
-    *   @since 0.1.0
-    *   @return array|bool
-    *
-    */
+     *
+     *  Sends the email or emails
+     *
+     *  @since 0.1.0
+     *  @return array|bool
+     *
+     */
     public function send($request) {
         $success = false;
 

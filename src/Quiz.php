@@ -1,13 +1,13 @@
 <?php
 
 /**
-*
-*   @link           https://github.com/demetris/omni-contact-form
-*   @author         Demetris Kikizas <d@kikizas.com>
-*   @copyright      2017 Demetris Kikizas
-*   @license        GPL-2.0
-*
-*/
+ *
+ *  @link           https://github.com/demetris/omni-contact-form
+ *  @author         Demetris Kikizas <d@kikizas.com>
+ *  @copyright      2017 Demetris Kikizas
+ *  @license        GPL-2.0
+ *
+ */
 
 namespace OmniContactForm;
 

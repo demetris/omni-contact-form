@@ -8,17 +8,17 @@ class Handler
     }
 
     /**
-    *
-    *   Handles the data of the form that is submitted to the REST endpoint
-    *
-    *   NOTE
-    *   There is no need to return after wp_send_json():
-    *   wp_send_json() concludes with wp_die() when doing Ajax.
-    *
-    *   @since 0.1.0
-    *   @return void
-    *
-    */
+     *
+     *  Handles the data of the form that is submitted to the REST endpoint
+     *
+     *  NOTE
+     *  There is no need to return after wp_send_json():
+     *  wp_send_json() concludes with wp_die() when doing Ajax.
+     *
+     *  @since 0.1.0
+     *  @return void
+     *
+     */
     public function dispatch(\WP_REST_Request $request) {
         if ($this->validate($request) !== true) {
             wp_send_json($this->validate($request));
@@ -30,13 +30,13 @@ class Handler
     }
 
     /**
-    *
-    *   Validates the form data
-    *
-    *   @since 0.1.0
-    *   @return array|bool Bool if successful, array containing feedback if not.
-    *
-    */
+     *
+     *  Validates the form data
+     *
+     *  @since 0.1.0
+     *  @return array|bool Bool if successful, array containing feedback if not.
+     *
+     */
     private function validate(\WP_REST_Request $request) {
         $alerts = [];
         $feedback = [];

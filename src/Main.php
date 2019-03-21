@@ -13,13 +13,13 @@ class Main
     }
 
     /**
-    *
-    *   Boots the plugin
-    *
-    *   @since 0.3.0
-    *   @return void
-    *
-    */
+     *
+     *  Boots the plugin
+     *
+     *  @since 0.3.0
+     *  @return void
+     *
+     */
     public function boot() {
         add_action('init', [$this, 'register_shortcode']);
         add_action('plugins_loaded', [$this, 'load_text_domain']);
@@ -28,15 +28,15 @@ class Main
     }
 
     /**
-    *
-    *   Registers a REST route
-    *
-    *   @wp-action rest_api_init
-    *
-    *   @since 0.1.0
-    *   @return void
-    *
-    */
+     *
+     *  Registers a REST route
+     *
+     *  @wp-action rest_api_init
+     *
+     *  @since 0.1.0
+     *  @return void
+     *
+     */
     public function register_route() {
         $handler = new Handler;
 
@@ -47,30 +47,30 @@ class Main
     }
 
     /**
-    *
-    *   Registers the plugin textdomain
-    *
-    *   @wp-action plugins_loaded
-    *
-    *   @since 0.1.0
-    *   @return void
-    *
-    */
+     *
+     *  Registers the plugin textdomain
+     *
+     *  @wp-action plugins_loaded
+     *
+     *  @since 0.1.0
+     *  @return void
+     *
+     */
     public function load_text_domain() {
         load_plugin_textdomain('omni-contact-form', false, OMNI_CONTACT_FORM_DIR . 'public/lang/');
     }
 
     /**
-    *
-    *   Registers the plugin shortcode
-    *
-    *   @wp-action init
-    *
-    *   @since 0.1.0
-    *   @see https://developer.wordpress.org/plugins/shortcodes/basic-shortcodes/
-    *   @return void
-    *
-    */
+     *
+     *  Registers the plugin shortcode
+     *
+     *  @wp-action init
+     *
+     *  @since 0.1.0
+     *  @see https://developer.wordpress.org/plugins/shortcodes/basic-shortcodes/
+     *  @return void
+     *
+     */
     public function register_shortcode() {
         $form = new Form;
 
@@ -78,26 +78,26 @@ class Main
     }
 
     /**
-    *
-    *   Registers the plugin JavaScript
-    *
-    *   @wp-action wp_enqueue_scripts
-    *
-    *   @since 0.1.0
-    *   @return void
-    *
-    */
+     *
+     *  Registers the plugin JavaScript
+     *
+     *  @wp-action wp_enqueue_scripts
+     *
+     *  @since 0.1.0
+     *  @return void
+     *
+     */
     public function register_js() {
         wp_register_script('ocf-main', OMNI_CONTACT_FORM_URI . 'public/js/main.js');
     }
 
     /**
-    *
-    *   Returns inline CSS for the form
-    *
-    *   @since 0.1.0
-    *
-    */
+     *
+     *  Returns inline CSS for the form
+     *
+     *  @since 0.1.0
+     *
+     */
     public function css(string $what = null): string {
         $style = '';
 
