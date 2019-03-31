@@ -3,6 +3,11 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.3.4 – 2019-03-31
+
+-   Increased maximum length of email address to 254 (per RFC 5321).
+
+
 ##  0.3.3 – 2019-03-21
 
 -   Added check to prevent non-digit input in quiz answer.
