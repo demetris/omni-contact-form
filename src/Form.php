@@ -164,7 +164,7 @@ class Form
         wp_enqueue_script('ocf-main');
 
         $atts           = $this->config($atts);
-        
+
         $main           = new Main;
         $quiz           = new Quiz;
         $crypto         = new Crypto;
@@ -267,7 +267,7 @@ class Form
         $form .= '<span class="label-text">' . esc_html($atts['email-label']) . '</span>';
         $form .= '<span id="ocf-alert-email" class="ocf-alert">' . esc_html($alert) . '</span>';
         $form .= '</label>' . "\n";
-        $form .= '<input id="ocf-email" type="email" name="email" maxlength="128" value="">' . "\n";
+        $form .= '<input id="ocf-email" type="email" name="email" maxlength="254" value="">' . "\n";
         $form .= '</p>' . "\n";
 
         $form .= '<label for="ocf-phone" style="display: none !important">';

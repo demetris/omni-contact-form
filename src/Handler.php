@@ -61,7 +61,7 @@ class Handler
             !empty($request['phone'])
             ||  mb_strlen($request['message']) > 2048
             ||  mb_strlen($request['subject']) > 128
-            ||  mb_strlen($request['email']) > 128
+            ||  mb_strlen($request['email']) > 254
             ||  mb_strlen($request['name']) > 128
         ) {
             sleep(1);
