@@ -11,8 +11,8 @@ Omni Contact Form is a WordPress plugin for people who want a basic contact form
 Features
 --------------------------------------------------------------------------------
 
--   Uses shortcode attributes for configuration (no settings page)
--   Has required fields only (if a field is in the form, it’s required)
+-   It uses shortcode attributes for configuration (no settings page)
+-   It has required fields only (if a field is in the form, it must be filled)
 -   It is light
 -   It is discreet (only adds JavaScript and CSS to its own page)
 -   It Is ready for translation
@@ -25,10 +25,10 @@ Requirements
 
 -   Server
     -   PHP 7.0 or newer
-    -   WordPress REST API
+    -   WordPress REST API (included in WordPress core since version 4.7)
     -   WordPress 4.9.9 or newer
 -   Browser
-    -   JavaScript (no fallback for browsers without JavaScript)
+    -   JavaScript (there is no fallback for browsers without JavaScript)
     -   Version released after 2012
 
 
@@ -42,26 +42,26 @@ Get the latest release from the [Releases page](https://github.com/demetris/omni
 
 ### Automatic
 
-Use [GitHub Updater](https://github.com/afragen/github-updater).
+Use the [GitHub Updater](https://github.com/afragen/github-updater) plugin.
 
 
 
 Usage
 --------------------------------------------------------------------------------
 
-Insert the shortcode `[omni-contact-form]` into a page or post to display the form.
+Insert the shortcode `[omni-contact-form]` into a page or post to display the form. This generates the default form: two fields (email address and message) and a submit button.
 
-`[omni-contact-form]` generates the default form: two fields (email address and message) and a button.
+To customize the form’s appearance and behaviour, you can use a number of shortcode attributes (see tables below).
 
-To customize the form’s appearance and behaviour, you can use a number of shortcode attributes (see tables below). Here are two examples:
+Here are two examples:
 
 `[omni-contact-form name="yes" quiz="yes" cc="10"]`
 
-The above shortcode generates a form that, in addition to the defaults, has a name field and a quiz field, and also sends a carbon copy to the WordPress user with ID 10.
-
 `[omni-contact-form quiz="yes" message-label="Your complaint"]`
 
-The above shortcode generates a form with a multiplication quiz and with the message label *Your complaint* (instead of the default *Message*).
+The first example generates a form that, in addition to the defaults, has a name field and a quiz field, and also sends a carbon copy to the WordPress user with ID 10.
+
+The second example generates a form with a multiplication quiz and with the message label *Your complaint* (instead of the default *Message*).
 
 
 
@@ -83,11 +83,13 @@ The basic attributes you can use to customize the behaviour of the form are:
 
 ### Notes
 
-If you give an invalid ID for `cc`, `to` or `redirect`, you will see a warning at the top of the messages sent by the form.
+If a `cc` ID is invalid, no carbon copy will be sent for it.
 
-If the `to` ID is invalid, the messages are sent to the default address (email address for admin puproses in the General Settings of WordPress).
+If the `to` ID is invalid, the messages go to the default address, which is the email address for admin puproses in the General Settings of WordPress.
 
 If the `redirect` ID is invalid, there will be no redirection after successful submission.
+
+The plugin will add notices at the top of the messages it sents if there are invalid `cc`, `to` or `redirect` values.
 
 
 
