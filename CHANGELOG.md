@@ -3,6 +3,11 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.3.5 – 2019-07-15
+
+-   Improved the README file.
+
+
 ##  0.3.4 – 2019-03-31
 
 -   Increased maximum length of email address to 254 (per RFC 5321).
