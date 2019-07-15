@@ -98,7 +98,7 @@ class Main
      *  @since 0.1.0
      *
      */
-    public function css(string $what = null): string {
+    public function get_css(string $what = null): string {
         $style = '';
 
         $style .= '<style>' . "\n";

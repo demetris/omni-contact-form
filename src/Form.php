@@ -327,14 +327,14 @@ class Form
         |   Load CSS
         |
         */
-        $css = $atts['css'] ? $main->css('all') : $main->css('req');
+        $css = $atts['css'] ? $main->get_css('all') : $main->get_css('req');
 
         /*
         |
         |   Return the form along with the copy container, any messages and the inline CSS
         |
-        |   TODO
-        |   2019-03-10. Find way to print the CSS in the document HEAD only on pages with the form.
+        |   TODO 2019-03-10
+        |   Find way to print the CSS in the document HEAD only on pages with the form.
         |
         */
         return $messages . $copy . $form . $css;
