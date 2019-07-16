@@ -3,6 +3,11 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.3.6 – 2019-07-16
+
+-   Fixed an issue in encryption/decryption.
+
+
 ##  0.3.5 – 2019-07-15
 
 -   Improved the README file.
