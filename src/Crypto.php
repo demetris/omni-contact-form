@@ -13,9 +13,10 @@ class Crypto
      *
      *  Encrypts a string using openssl_encrypt()
      *
+     *  Based on the answer by blade (Matúš Koprda) at https://stackoverflow.com/questions/3422759
+     *
      *  @since 0.1.3
-     *  @author blade (Matúš Koprda)
-     *  @see https://stackoverflow.com/questions/3422759
+     *  @return string
      *
      */
     public function encrypt(string $plaintext, string $password): string {
@@ -23,21 +24,23 @@ class Crypto
             return '0';
         }
 
+        $iv_length  = openssl_cipher_iv_length($this->method);
+
         $key        = hash('sha256', $password);
-        $nonce      = bin2hex(random_bytes(8));
-        $ciphertext = openssl_encrypt($plaintext, $this->method, $key, 0, $nonce);
+        $iv         = random_bytes($iv_length);
+        $ciphertext = openssl_encrypt($plaintext, $this->method, $key, 0, $iv);
         $hash       = hash_hmac('sha256', $ciphertext, $key);
 
-        return $nonce . $hash . $ciphertext;
+        return bin2hex($iv) . $hash . $ciphertext;
     }
 
     /**
      *
      *  Decrypts a string from Crypto::encrypt() using openssl_decrypt()
      *
+     *  Based on the answer by blade (Matúš Koprda) at https://stackoverflow.com/questions/3422759
+     *
      *  @since 0.1.3
-     *  @author blade (Matúš Koprda)
-     *  @see https://stackoverflow.com/questions/3422759
      *  @return string|null
      *
      */
@@ -46,15 +49,17 @@ class Crypto
             return '0';
         }
 
+        $iv_length  = openssl_cipher_iv_length($this->method);
+
         $key        = hash('sha256', $password);
-        $nonce      = substr($strings, 0, 16);
-        $hash       = substr($strings, 16, 64);
-        $ciphertext = substr($strings, 80);
+        $iv         = hex2bin(substr($strings, 0, $iv_length * 2));
+        $hash       = substr($strings, $iv_length * 2, 64);
+        $ciphertext = substr($strings, ($iv_length * 2) + 64);
 
         if (hash_hmac('sha256', $ciphertext, $key) !== $hash) {
             return null;
         }
 
-        return openssl_decrypt($ciphertext, $this->method, $key, 0, $nonce);
+        return openssl_decrypt($ciphertext, $this->method, $key, 0, $iv);
     }
 }
