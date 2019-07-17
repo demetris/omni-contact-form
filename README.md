@@ -15,7 +15,7 @@ Features
 -   It has required fields only (if a field is in the form, it must be filled)
 -   It is light
 -   It is discreet (only adds JavaScript and CSS to its own page)
--   It Is ready for translation
+-   It is ready for translation
 -   It displays a printable copy of the message after submission
 
 
