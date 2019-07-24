@@ -3,6 +3,11 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.4.0 – 2019-07-24
+
+-   Improved the way the plugin CSS is loaded.
+
+
 ##  0.3.7 – 2019-07-17
 
 -   Added small description for the WordPress.org repository.
