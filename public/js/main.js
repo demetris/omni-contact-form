@@ -79,7 +79,7 @@ function handleFormAlerts(form, alerts) {
             field.classList.add('has-error');
         }
     }
-    form.addEventListener('keypress', function (event) {
+    form.addEventListener('focusin', function (event) {
         var target = event.target;
         if (['INPUT', 'TEXTAREA'].indexOf(target.nodeName) > -1 && target.classList.contains('has-error')) {
             alert = document.getElementById('ocf-alert-' + target.name);

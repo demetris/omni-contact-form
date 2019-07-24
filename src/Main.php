@@ -24,6 +24,7 @@ class Main
         add_action('init', [$this, 'register_shortcode']);
         add_action('plugins_loaded', [$this, 'load_text_domain']);
         add_action('rest_api_init', [$this, 'register_route']);
+        add_action('wp_enqueue_scripts', [$this, 'register_css']);
         add_action('wp_enqueue_scripts', [$this, 'register_js']);
     }
 
@@ -79,6 +80,21 @@ class Main
 
     /**
      *
+     *  Registers the plugin CSS
+     *
+     *  @wp-action wp_enqueue_scripts
+     *
+     *  @since 0.4.0
+     *  @return void
+     *
+     */
+    public function register_css() {
+        wp_register_style('ocf-all', OMNI_CONTACT_FORM_URI . 'public/css/all.css');
+        wp_register_style('ocf-required', OMNI_CONTACT_FORM_URI . 'public/css/required.css');
+    }
+
+    /**
+     *
      *  Registers the plugin JavaScript
      *
      *  @wp-action wp_enqueue_scripts
@@ -89,28 +105,5 @@ class Main
      */
     public function register_js() {
         wp_register_script('ocf-main', OMNI_CONTACT_FORM_URI . 'public/js/main.js');
-    }
-
-    /**
-     *
-     *  Returns inline CSS for the form
-     *
-     *  @since 0.1.0
-     *
-     */
-    public function get_css(string $what = null): string {
-        $style = '';
-
-        $style .= '<style>' . "\n";
-
-        if ($what === 'all') {
-            $style .= file_get_contents(OMNI_CONTACT_FORM_DIR . 'public/css/optional.css', true);
-        }
-
-        $style .= file_get_contents(OMNI_CONTACT_FORM_DIR . 'public/css/main.css', true);
-
-        $style .= '</style>' . "\n";
-
-        return $style;
     }
 }

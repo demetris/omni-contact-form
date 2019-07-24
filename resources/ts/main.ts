@@ -101,7 +101,7 @@ function handleFormAlerts(form: HTMLFormElement, alerts: any) {
         }
     }
 
-    form.addEventListener('keypress', function(event: any) {
+    form.addEventListener('focusin', function(event: any) {
         let target: any = event.target;
 
         if (['INPUT', 'TEXTAREA'].indexOf(target.nodeName) > -1 && target.classList.contains('has-error')) {
