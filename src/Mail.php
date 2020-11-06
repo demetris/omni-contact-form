@@ -41,13 +41,13 @@ class Mail
             $redirect = ($request['redirect']);
 
             $warnings[] = sprintf(
-                esc_html__('Post ID %s given in attribute REDIRECT does not exist. No redirect performed.', 'omni-contact-form'), $redirect
+                esc_html__('Post ID %s given for REDIRECT field in shortcode does not exist. No redirect performed.', 'omni-contact-form'), $redirect
             );
         }
 
         if (isset($data['to']) && get_userdata($data['to']) === false) {
             $warnings[] = sprintf(
-                esc_html__('User ID %s given in attribute TO does not exist. Default used.', 'omni-contact-form'), $data['to']
+                esc_html__('User ID %s given for TO field in shortcode does not exist. Default used.', 'omni-contact-form'), $data['to']
             );
 
             unset($data['to']);
@@ -57,7 +57,7 @@ class Mail
             foreach ($data['cc'] as $key => $ID) {
                 if (get_userdata((int) $ID) === false) {
                     $warnings[] = sprintf(
-                        esc_html__('User ID %s given in attribute CC does not exist. Carbon copy not sent.', 'omni-contact-form'), $ID
+                        esc_html__('User ID %s given for CC field in shortcode does not exist. Carbon copy not sent.', 'omni-contact-form'), $ID
                     );
 
                     unset($data['cc'][$key]);
