@@ -6,6 +6,7 @@ Omni Contact Form: Changelog
 ##  0.4.2 – 2020-11-06
 
 -   Impoved error handling in a couple of cases.
+-   Improved warning messages for invalid values in shortcode.
 -   Added GitHub action to deploy automatically from GitHub to the WordPress repo.
 -   Updated latest WordPress version the plugin has been tested with.
 
