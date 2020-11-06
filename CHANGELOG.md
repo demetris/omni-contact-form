@@ -3,6 +3,13 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.4.2 – 2020-11-06
+
+-   Impoved error handling in a couple of cases.
+-   Added GitHub action to deploy automatically from GitHub to the WordPress repo.
+-   Updated latest WordPress version the plugin has been tested with.
+
+
 ##  0.4.1 – 2019-07-25
 
 -   Improved the README file.
