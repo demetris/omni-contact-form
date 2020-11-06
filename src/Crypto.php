@@ -51,7 +51,7 @@ class Crypto
         $hash       = substr($strings, $iv_length * 2, 64);
         $ciphertext = substr($strings, ($iv_length * 2) + 64);
 
-        if (hash_hmac('sha256', $ciphertext, $key) !== $hash) {
+        if (!hash_equals(hash_hmac('sha256', $ciphertext, $key), $hash)) {
             return null;
         }
 
