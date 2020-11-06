@@ -7,6 +7,9 @@ class Crypto
     private $method = 'AES-256-CBC';
 
     public function __construct() {
+        if (!extension_loaded('openssl')) {
+            throw new \Exception('OpenSSL extension is not loaded.');
+        }
     }
 
     /**
@@ -20,10 +23,6 @@ class Crypto
      *
      */
     public function encrypt(string $plaintext, string $password): string {
-        if (!extension_loaded('openssl')) {
-            return '0';
-        }
-
         $iv_length  = openssl_cipher_iv_length($this->method);
 
         $key        = hash('sha256', $password);
@@ -45,10 +44,6 @@ class Crypto
      *
      */
     public function decrypt(string $strings, string $password) {
-        if (!extension_loaded('openssl')) {
-            return '0';
-        }
-
         $iv_length  = openssl_cipher_iv_length($this->method);
 
         $key        = hash('sha256', $password);
