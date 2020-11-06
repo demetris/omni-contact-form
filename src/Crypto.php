@@ -5,11 +5,14 @@ namespace OmniContactForm;
 class Crypto
 {
     private $method = 'AES-256-CBC';
+    private $iv_length = null;
 
     public function __construct() {
         if (!extension_loaded('openssl')) {
             throw new \Exception('OpenSSL extension is not loaded.');
         }
+
+        $this->iv_length = openssl_cipher_iv_length($this->method);
     }
 
     /**
@@ -23,10 +26,8 @@ class Crypto
      *
      */
     public function encrypt(string $plaintext, string $password): string {
-        $iv_length  = openssl_cipher_iv_length($this->method);
-
         $key        = hash('sha256', $password);
-        $iv         = random_bytes($iv_length);
+        $iv         = random_bytes($this->iv_length);
         $ciphertext = openssl_encrypt($plaintext, $this->method, $key, 0, $iv);
         $hash       = hash_hmac('sha256', $ciphertext, $key);
 
@@ -44,12 +45,10 @@ class Crypto
      *
      */
     public function decrypt(string $strings, string $password): string {
-        $iv_length  = openssl_cipher_iv_length($this->method);
-
         $key        = hash('sha256', $password);
-        $iv         = hex2bin(substr($strings, 0, $iv_length * 2));
-        $hash       = substr($strings, $iv_length * 2, 64);
-        $ciphertext = substr($strings, ($iv_length * 2) + 64);
+        $iv         = hex2bin(substr($strings, 0, $this->iv_length * 2));
+        $hash       = substr($strings, $this->iv_length * 2, 64);
+        $ciphertext = substr($strings, ($this->iv_length * 2) + 64);
 
         if (!hash_equals(hash_hmac('sha256', $ciphertext, $key), $hash)) {
             throw new \Exception('Message has been tampered with.');
