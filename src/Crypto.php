@@ -40,10 +40,10 @@ class Crypto
      *  Based on the answer by blade (Matúš Koprda) at https://stackoverflow.com/questions/3422759
      *
      *  @since 0.1.3
-     *  @return string|null
+     *  @return string
      *
      */
-    public function decrypt(string $strings, string $password) {
+    public function decrypt(string $strings, string $password): string {
         $iv_length  = openssl_cipher_iv_length($this->method);
 
         $key        = hash('sha256', $password);
@@ -52,7 +52,7 @@ class Crypto
         $ciphertext = substr($strings, ($iv_length * 2) + 64);
 
         if (!hash_equals(hash_hmac('sha256', $ciphertext, $key), $hash)) {
-            return null;
+            throw new \Exception('Message has been tampered with.');
         }
 
         return openssl_decrypt($ciphertext, $this->method, $key, 0, $iv);
