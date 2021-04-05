@@ -3,6 +3,12 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.4.3 – 2021-04-05
+
+-   Improved REST route registration to satisfy requirement introduced in WordPress 5.5.
+-   Updated latest WordPress version the plugin has been tested with (5.7).
+
+
 ##  0.4.2 – 2020-11-06
 
 -   Impoved error handling in a couple of cases.
