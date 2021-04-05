@@ -43,7 +43,8 @@ class Main
 
         register_rest_route('omni/v1', '/post', [
             'methods' => 'POST',
-            'callback' => [$handler, 'dispatch']
+            'callback' => [$handler, 'dispatch'],
+            'permission_callback' => '__return_true'
         ]);
     }
 
