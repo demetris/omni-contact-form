@@ -7,6 +7,8 @@ class Form
     private $defaults = [];
 
     public function __construct() {
+        $handler = new Handler;
+
         $this->defaults = [
             'cc'                    => false,
             'hide-after'            => false,
@@ -35,11 +37,11 @@ class Form
             'email-empty'           => esc_html__('The email address is missing!', 'omni-contact-form'),
             'email-invalid'         => esc_html__('The email address is not valid!', 'omni-contact-form'),
             'message-empty'         => esc_html__('The message is missing!', 'omni-contact-form'),
-            'message-short'         => esc_html__('The message must have at least 12 characters!', 'omni-contact-form'),
             'name-empty'            => esc_html__('The name is missing!', 'omni-contact-form'),
-            'name-short'            => esc_html__('The name must have at least 4 characters!', 'omni-contact-form'),
             'subject-empty'         => esc_html__('The subject is missing!', 'omni-contact-form'),
-            'subject-short'         => esc_html__('The subject must have at least 4 characters!', 'omni-contact-form'),
+            'message-short'         => sprintf(esc_html__('The message must have at least %d characters!', 'omni-contact-form'), $handler->message_min_len),
+            'name-short'            => sprintf(esc_html__('The name must have at least %d characters!', 'omni-contact-form'), $handler->name_min_len),
+            'subject-short'         => sprintf(esc_html__('The subject must have at least %d characters!', 'omni-contact-form'), $handler->subject_min_len),
 
             'mail-error'            => esc_html__('Mail error: Could not send the message.', 'omni-contact-form'),
             'network-error'         => esc_html__('Network error: Could not connect to the server.', 'omni-contact-form'),
