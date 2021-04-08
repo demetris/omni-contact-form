@@ -1,200 +1,199 @@
-# Copyright (C) 2018 Omni Contact Form
-# This file is distributed under the same license as the Omni Contact Form package.
-#, fuzzy
+# Copyright (C) 2021 Demetris Kikizas
+# This file is distributed under the same license as the Omni Contact Form plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Omni Contact Form\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Omni-Contact-"
-"Form\n"
-"POT-Creation-Date: 2020-11-06 21:18+0200\n"
+"Project-Id-Version: Omni Contact Form 0.4.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/omni-contact-form\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: Poedit 2.4.1\n"
-"X-Poedit-KeywordsList: __;esc_html__\n"
-"X-Poedit-Basepath: ../../src\n"
-"X-Poedit-SearchPath-0: .\n"
+"POT-Creation-Date: 2021-04-08T15:38:20+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: omni-contact-form\n"
 
-#: Form.php:24
+#. Plugin Name of the plugin
+msgid "Omni Contact Form"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/demetris/omni-contact-form"
+msgstr ""
+
+#. Description of the plugin
+msgid "A simple contact form with simple shortcode settings"
+msgstr ""
+
+#. Author of the plugin
+msgid "Demetris Kikizas"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://kikizas.com/"
+msgstr ""
+
+#: src/Form.php:26
 msgid "Send a message to get in touch!"
 msgstr ""
 
-#: Form.php:26
+#: src/Form.php:28
 msgid "Email address"
 msgstr ""
 
-#: Form.php:27
+#: src/Form.php:29
 msgid "Message"
 msgstr ""
 
-#: Form.php:28
+#: src/Form.php:30
 msgid "Name"
 msgstr ""
 
-#: Form.php:29
+#: src/Form.php:31
 msgid "Sending..."
 msgstr ""
 
-#: Form.php:30
+#: src/Form.php:32
 msgid "Subject"
 msgstr ""
 
-#: Form.php:31
+#: src/Form.php:33
 msgid "Send"
 msgstr ""
 
-#: Form.php:33
+#: src/Form.php:35
 msgid "The answer is missing!"
 msgstr ""
 
-#: Form.php:34
+#: src/Form.php:36
 msgid "The answer is wrong!"
 msgstr ""
 
-#: Form.php:35
+#: src/Form.php:37
 msgid "The email address is missing!"
 msgstr ""
 
-#: Form.php:36
+#: src/Form.php:38
 msgid "The email address is not valid!"
 msgstr ""
 
-#: Form.php:37
+#: src/Form.php:39
 msgid "The message is missing!"
 msgstr ""
 
-#: Form.php:38
-msgid "The message must have at least 12 characters!"
-msgstr ""
-
-#: Form.php:39
+#: src/Form.php:40
 msgid "The name is missing!"
 msgstr ""
 
-#: Form.php:40
-msgid "The name must have at least 4 characters!"
-msgstr ""
-
-#: Form.php:41
+#: src/Form.php:41
 msgid "The subject is missing!"
 msgstr ""
 
-#: Form.php:42
-msgid "The subject must have at least 4 characters!"
+#: src/Form.php:42
+msgid "The message must have at least %d characters!"
 msgstr ""
 
-#: Form.php:44
+#: src/Form.php:43
+msgid "The name must have at least %d characters!"
+msgstr ""
+
+#: src/Form.php:44
+msgid "The subject must have at least %d characters!"
+msgstr ""
+
+#: src/Form.php:46
 msgid "Mail error: Could not send the message."
 msgstr ""
 
-#: Form.php:45
+#: src/Form.php:47
 msgid "Network error: Could not connect to the server."
 msgstr ""
 
-#: Form.php:46
+#: src/Form.php:48
 msgid "Something went wrong! Please refresh the page and try again!"
 msgstr ""
 
-#: Form.php:47
+#: src/Form.php:49
 msgid "To use this form, please visit the page with a newer browser."
 msgstr ""
 
-#: Form.php:49
+#: src/Form.php:51
 msgid "Thank you for your message!"
 msgstr ""
 
-#: Form.php:304
-#, php-format
+#: src/Form.php:306
 msgid "What is %d × %d?"
 msgstr ""
 
-#: Mail.php:36
+#: src/Mail.php:36
 msgid "NONE"
 msgstr ""
 
-#: Mail.php:44
-#, php-format
-msgid ""
-"Post ID %s given for REDIRECT field in shortcode does not exist. No "
-"redirect performed."
+#: src/Mail.php:44
+msgid "Post ID %s given for REDIRECT field in shortcode does not exist. No redirect performed."
 msgstr ""
 
-#: Mail.php:50
-#, php-format
-msgid ""
-"User ID %s given for TO field in shortcode does not exist. Default used."
+#: src/Mail.php:50
+msgid "User ID %s given for TO field in shortcode does not exist. Default used."
 msgstr ""
 
-#: Mail.php:60
-#, php-format
-msgid ""
-"User ID %s given for CC field in shortcode does not exist. Carbon copy "
-"not sent."
+#: src/Mail.php:60
+msgid "User ID %s given for CC field in shortcode does not exist. Carbon copy not sent."
 msgstr ""
 
-#: Mail.php:105
-#, php-format
+#: src/Mail.php:105
 msgid "Message to %s from %s"
 msgstr ""
 
-#: Mail.php:113
+#: src/Mail.php:113
 msgid "WARNINGS"
 msgstr ""
 
-#: Mail.php:113
+#: src/Mail.php:113
 msgid "WARNING"
 msgstr ""
 
-#: Mail.php:130
+#: src/Mail.php:130
 msgid "SENDER"
 msgstr ""
 
-#: Mail.php:134
-#, php-format
+#: src/Mail.php:134
 msgid "Name: %s"
 msgstr ""
 
-#: Mail.php:137
-#, php-format
+#: src/Mail.php:137
 msgid "Email address: %s"
 msgstr ""
 
-#: Mail.php:141
+#: src/Mail.php:141
 msgid "SUBJECT"
 msgstr ""
 
-#: Mail.php:148
+#: src/Mail.php:148
 msgid "MESSAGE"
 msgstr ""
 
-#: Mail.php:154
+#: src/Mail.php:154
 msgid "FORM INFO"
 msgstr ""
 
-#: Mail.php:157
-#, php-format
+#: src/Mail.php:157
 msgid "Form URL: %s"
 msgstr ""
 
-#: Mail.php:159
-#, php-format
+#: src/Mail.php:159
 msgid "Referrer URL: %s"
 msgstr ""
 
-#: Mail.php:161
-#, php-format
+#: src/Mail.php:161
 msgid "Time: %1$s %2$s (%3$s)"
 msgstr ""
 
-#: Mail.php:178
-#, php-format
+#: src/Mail.php:178
 msgid "Email sent from %s via the Omni Contact Form"
 msgstr ""
 
-#: Mail.php:248
-#, php-format
+#: src/Mail.php:248
 msgid "Copy of your message to %s"
 msgstr ""
