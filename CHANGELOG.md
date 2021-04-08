@@ -3,6 +3,11 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.4.4 – 2021-04-08
+
+-   Tweaked some strings to make translation easier.
+
+
 ##  0.4.3 – 2021-04-05
 
 -   Improved REST route registration to satisfy requirement introduced in WordPress 5.5.
