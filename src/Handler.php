@@ -4,6 +4,10 @@ namespace OmniContactForm;
 
 class Handler
 {
+    public $message_min_len = 12;
+    public $name_min_len = 4;
+    public $subject_min_len = 4;
+
     public function __construct() {
     }
 
@@ -80,14 +84,14 @@ class Handler
 
         if (empty($request['message'])) {
             $alerts['message'] = 'message-empty';
-        } elseif (mb_strlen($request['message']) - mb_substr_count($request['message'], ' ') < 12) {
+        } elseif (mb_strlen($request['message']) - mb_substr_count($request['message'], ' ') < $this->message_min_len) {
             $alerts['message'] = 'message-short';
         }
 
         if (isset($request['name'])) {
             if (empty($request['name'])) {
                 $alerts['name'] = 'name-empty';
-            } elseif (mb_strlen($request['name']) - mb_substr_count($request['name'], ' ') < 4) {
+            } elseif (mb_strlen($request['name']) - mb_substr_count($request['name'], ' ') < $this->name_min_len) {
                 $alerts['name'] = 'name-short';
             }
         }
@@ -95,7 +99,7 @@ class Handler
         if (isset($request['subject'])) {
             if (empty($request['subject'])) {
                 $alerts['subject'] = 'subject-empty';
-            } elseif (mb_strlen($request['subject']) - mb_substr_count($request['subject'], ' ') < 4) {
+            } elseif (mb_strlen($request['subject']) - mb_substr_count($request['subject'], ' ') < $this->subject_min_len) {
                 $alerts['subject'] = 'subject-short';
             }
         }
