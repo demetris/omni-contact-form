@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-04-08T15:38:20+03:00\n"
+"POT-Creation-Date: 2021-04-09T12:23:25+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: omni-contact-form\n"
@@ -126,74 +126,77 @@ msgstr ""
 msgid "What is %d × %d?"
 msgstr ""
 
-#: src/Mail.php:36
+#. translators: Value for referrer when the form page is accessed directly, that is, without a referrer.
+#: src/Mail.php:40
 msgid "NONE"
 msgstr ""
 
-#: src/Mail.php:44
+#: src/Mail.php:46
 msgid "Post ID %s given for REDIRECT field in shortcode does not exist. No redirect performed."
 msgstr ""
 
-#: src/Mail.php:50
+#: src/Mail.php:52
 msgid "User ID %s given for TO field in shortcode does not exist. Default used."
 msgstr ""
 
-#: src/Mail.php:60
+#: src/Mail.php:62
 msgid "User ID %s given for CC field in shortcode does not exist. Carbon copy not sent."
 msgstr ""
 
-#: src/Mail.php:105
+#: src/Mail.php:107
 msgid "Message to %s from %s"
 msgstr ""
 
-#: src/Mail.php:113
+#. translators: Heading for warnings added to the email message if two or more of TO, CC, REDIRECT shortcode fields have issues.
+#: src/Mail.php:117
 msgid "WARNINGS"
 msgstr ""
 
-#: src/Mail.php:113
+#. translators: Heading for warning added to the email message if one of TO, CC, REDIRECT shortcode fields has an issue.
+#: src/Mail.php:120
 msgid "WARNING"
 msgstr ""
 
-#: src/Mail.php:130
+#: src/Mail.php:148
 msgid "SENDER"
 msgstr ""
 
-#: src/Mail.php:134
+#: src/Mail.php:152
 msgid "Name: %s"
 msgstr ""
 
-#: src/Mail.php:137
+#: src/Mail.php:155
 msgid "Email address: %s"
 msgstr ""
 
-#: src/Mail.php:141
+#: src/Mail.php:159
 msgid "SUBJECT"
 msgstr ""
 
-#: src/Mail.php:148
+#: src/Mail.php:166
 msgid "MESSAGE"
 msgstr ""
 
-#: src/Mail.php:154
+#: src/Mail.php:172
 msgid "FORM INFO"
 msgstr ""
 
-#: src/Mail.php:157
+#: src/Mail.php:175
 msgid "Form URL: %s"
 msgstr ""
 
-#: src/Mail.php:159
+#: src/Mail.php:177
 msgid "Referrer URL: %s"
 msgstr ""
 
-#: src/Mail.php:161
+#: src/Mail.php:179
 msgid "Time: %1$s %2$s (%3$s)"
 msgstr ""
 
-#: src/Mail.php:178
+#: src/Mail.php:196
 msgid "Email sent from %s via the Omni Contact Form"
 msgstr ""
 
-#: src/Mail.php:248
+#: src/Mail.php:266
 msgid "Copy of your message to %s"
 msgstr ""
