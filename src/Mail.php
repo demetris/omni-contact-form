@@ -33,9 +33,11 @@ class Mail
         $data['home']           = esc_url($request['home']);
         $data['message']        = sanitize_textarea_field($request['message']);
         $data['name']           = isset($request['name']) ? sanitize_text_field($request['name']) : null;
-        $data['referrer']       = isset($request['referrer']) ? esc_url($request['referrer']) : esc_html__('NONE', 'omni-contact-form');
         $data['subject']        = isset($request['subject']) ? sanitize_text_field($request['subject']) : null;
         $data['to']             = isset($request['to']) ? $crypto->decrypt($request['to'], $main->password) : null;
+
+        /* translators: Value for referrer when the form page is accessed directly, that is, without a referrer. */
+        $data['referrer']       = isset($request['referrer']) ? esc_url($request['referrer']) : esc_html__('NONE', 'omni-contact-form');
 
         if (isset($request['redirect-warning'])) {
             $redirect = ($request['redirect']);
@@ -110,11 +112,27 @@ class Mail
         |
         */
         if ($data['warnings']) {
-            $heading = count($data['warnings']) > 1 ? esc_html__('WARNINGS', 'omni-contact-form') : esc_html__('WARNING', 'omni-contact-form');
+            if (count($data['warnings']) > 1) {
+                /* translators: Heading for warnings added to the email message if two or more of TO, CC, REDIRECT shortcode fields have issues. */
+                $heading = esc_html__('WARNINGS', 'omni-contact-form');
+            } else {
+                /* translators: Heading for warning added to the email message if one of TO, CC, REDIRECT shortcode fields has an issue. */
+                $heading = esc_html__('WARNING', 'omni-contact-form');
+            }
 
+            /*
+            |
+            |   Add heading for the warning or warnings
+            |
+            */
             $message['warnings'] .= $heading . "\n";
             $message['warnings'] .= "\n";
 
+            /*
+            |
+            |   Add the warning or warnings
+            |
+            */
             foreach ($data['warnings'] as $warning) {
                 $message['warnings'] .= $warning . "\n";
             }
