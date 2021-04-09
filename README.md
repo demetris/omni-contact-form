@@ -74,6 +74,7 @@ The basic attributes you can use to customize the form are:
 
 | Attribute    | Value         | Default     | Description                                                             |
 |:-------------|:--------------|:------------|:------------------------------------------------------------------------|
+| `prompt`     | yes/no        | no          | Include a prompt message in the form                                    |
 | `name`       | yes/no        | no          | Include a name field in the form                                        |
 | `subject`    | yes/no        | no          | Include a subject field in the form                                     |
 | `quiz`       | yes/no        | no          | Include a multiplication quiz as a basic antispam measure               |
