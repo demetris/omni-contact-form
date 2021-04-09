@@ -3,6 +3,12 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.4.5 – 2021-04-09
+
+-   Added missing shortcode field to README (whether to include prompt message).
+-   Added comments for translators to a few strings.
+
+
 ##  0.4.4 – 2021-04-08
 
 -   Tweaked some strings to make translation easier.
