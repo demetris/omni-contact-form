@@ -59,7 +59,7 @@ class Main
      *
      */
     public function load_text_domain() {
-        load_plugin_textdomain('omni-contact-form', false, OMNI_CONTACT_FORM_DIR . 'public/lang/');
+        load_plugin_textdomain('omni-contact-form', false, OMNI_CONTACT_FORM_DIR . 'lang/');
     }
 
     /**
@@ -90,8 +90,8 @@ class Main
      *
      */
     public function register_css() {
-        wp_register_style('ocf-all', OMNI_CONTACT_FORM_URI . 'public/css/all.css');
-        wp_register_style('ocf-required', OMNI_CONTACT_FORM_URI . 'public/css/required.css');
+        wp_register_style('ocf-all', OMNI_CONTACT_FORM_URI . 'assets/all.css');
+        wp_register_style('ocf-required', OMNI_CONTACT_FORM_URI . 'assets/required.css');
     }
 
     /**
@@ -105,6 +105,6 @@ class Main
      *
      */
     public function register_js() {
-        wp_register_script('ocf-main', OMNI_CONTACT_FORM_URI . 'public/js/main.js');
+        wp_register_script('ocf-main', OMNI_CONTACT_FORM_URI . 'assets/main.js');
     }
 }

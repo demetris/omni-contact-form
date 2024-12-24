@@ -12,7 +12,7 @@
     License:                GPL-2.0
     License URI:            https://opensource.org/licenses/GPL-2.0
     Text Domain:            omni-contact-form
-    Domain Path:            /public/lang
+    Domain Path:            /lang
     Requires PHP:           7.0
     GitHub Plugin URI:      https://github.com/demetris/omni-contact-form
 */

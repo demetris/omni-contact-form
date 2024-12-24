@@ -1,5 +1,5 @@
 @charset "UTF-8";
 
 
-@import 'main';
-@import 'optional';
+@use 'optional';
+@use 'required';
