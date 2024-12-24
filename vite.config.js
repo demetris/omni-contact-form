@@ -16,10 +16,10 @@ export default defineConfig(() => {
 		base: './',
 		css: {
 			devSourcemap: true,
-			preprocessorOptions: {
-			},
 			postcss: {
-				plugins: [autoprefixer()],
+				plugins: [
+          autoprefixer()
+        ],
 			},
 		},
 		build: {

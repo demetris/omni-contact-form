@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-
-$color-error: #DC3545;
-
-
 .ocf {
   label {
     display: inline-block;
@@ -20,13 +16,13 @@ $color-error: #DC3545;
     }
   }
 
+  input[type="number"] {
+    appearance: textfield;
+  }
+
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-
-  input[type="number"] {
-    -moz-appearance: textfield;
   }
 }

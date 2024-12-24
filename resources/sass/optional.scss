@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-
-$color-error: #DC3545;
-
-
 .ocf {
+  --error: #DC3545;
+  --error-bg: #fdf3f4;
+  --transition-duration: 250ms;
+
   input,
   textarea {
     display: block;
@@ -33,12 +33,9 @@ $color-error: #DC3545;
 
   .ocf-alert {
     opacity: 1;
-
-    transition: opacity 187.5ms ease;
-
+    transition: opacity var(--transition-duration) ease;
     margin-left: 1rem;
-
-    color: $color-error;
+    color: var(--error);
 
     &.is-fading-out {
       opacity: 0;
@@ -46,12 +43,9 @@ $color-error: #DC3545;
   }
 
   .has-error {
-    border-color: $color-error !important;
-
-    box-shadow: 0 0 0 0.125rem $color-error !important;
-    box-shadow: 0 0 0 1px $color-error !important;
-
-    background-color: #fdf3f4 !important;
+    box-shadow: 0 0 0 1px var(--error) !important;
+    border-color: var(--error) !important;
+    background-color: var(--error-bg) !important;
   }
 
   .form-group-submit {
@@ -96,9 +90,8 @@ $color-error: #DC3545;
 }
 
 .ocf-fade-in {
-  animation: fade-in 0.250s forwards;
+  animation: fade-in var(--transition-duration) forwards;
 }
-
 
 @keyframes fade-in {
   0% {
@@ -110,7 +103,6 @@ $color-error: #DC3545;
   }
 }
 
-
 @keyframes fade-out {
   0% {
     opacity: 1;
@@ -121,25 +113,23 @@ $color-error: #DC3545;
   }
 }
 
-
 @media only screen and (min-width: 992px) {
   .ocf input[type="email"],
   .ocf input[type="text"] {
     max-width: 50%;
   }
-  .widget .ocf input[type="email"], .widget
-  .ocf input[type="text"] {
+  .widget .ocf input[type="email"],
+  .widget .ocf input[type="text"] {
     width: 100%;
   }
 }
 
-
 @media print {
-  //
-  //
-  //  @see https://stackoverflow.com/questions/468881
-  //
-  //
+  ///
+  ///
+  /// @see https://stackoverflow.com/questions/468881
+  ///
+  ///
   body {
     max-height: 1024px;
   }
@@ -159,7 +149,6 @@ $color-error: #DC3545;
   }
 
   .ocf-message-copy {
-  //  position: absolute;
     position: fixed;
     left: 0;
     top: 0;
