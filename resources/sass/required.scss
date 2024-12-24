@@ -5,28 +5,28 @@ $color-error: #DC3545;
 
 
 .ocf {
-    label {
-        display: inline-block;
-    }
+  label {
+    display: inline-block;
+  }
 
-    .ocf-progress {
-        &.is-visible {
-            display: inline-block !important;
-        }
+  .ocf-progress {
+    &.is-visible {
+      display: inline-block !important;
     }
+  }
 
-    .ocf-alert {
-        &::before {
-        }
+  .ocf-alert {
+    &::before {
     }
+  }
 
-    input[type="number"]::-webkit-outer-spin-button,
-    input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-    input[type="number"] {
-        -moz-appearance: textfield;
-    }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
