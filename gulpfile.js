@@ -28,23 +28,23 @@
 
 var source = {
     css: [
-        '../public/css/main.css',
-        '../public/css/optional.css'
+        './public/css/main.css',
+        './public/css/optional.css'
     ],
     js: [
-        '../public/js/main.js'
+        './public/js/main.js'
     ],
     sass: [
-        'sass/*.scss'
+        './resources/sass/*.scss'
     ],
     ts: [
-        'ts/*.ts'
+        './resources/ts/*.ts'
     ]
 };
 
 var public = {
-    css: '../public/css',
-    js: '../public/js'
+    css: './public/css',
+    js: './public/js'
 };
 
 var sassConfig = {
