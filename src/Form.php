@@ -139,6 +139,14 @@ class Form
 
         /*
         |
+        | Remove sensitive date from the compact copy
+        |
+        */
+        unset($atts_compact['cc']);
+        unset($atts_compact['to']);
+
+        /*
+        |
         |   Send the compact copy of the attributes to JavaScript as an object
         |
         */
