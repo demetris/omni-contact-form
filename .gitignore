@@ -1,9 +1,6 @@
 #
 # Composer
 #
-/vendor/*
-!/vendor/composer/
-!/vendor/autoload.php
 
 #
 # Node.js packages
