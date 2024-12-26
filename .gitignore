@@ -1,14 +1,26 @@
+#
 # Composer
-/vendor/
+#
+/vendor/*
+!/vendor/composer/
+!/vendor/autoload.php
 
-# Node: Dependency directories
-node_modules/
+#
+# Node.js packages
+#
+/node_modules/
 
+#
 # Sublime Text: Workspace files are user-specific
+#
 *.sublime-workspace
 
+#
 # Windows: Thumbnail cache files
+#
 Thumbs.db
 
-# Window: Folder config file
+#
+# Window: Folder config files
+#
 [Dd]esktop.ini
