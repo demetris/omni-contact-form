@@ -21,15 +21,6 @@ namespace OmniContactForm;
 
 /*
 |
-| Add autoloader
-|
-| @since 0.5.0
-|
-*/
-require __DIR__ . '/vendor/autoload.php';
-
-/*
-|
 | Define constants
 |
 | @since 0.3.0
@@ -37,6 +28,53 @@ require __DIR__ . '/vendor/autoload.php';
 */
 define('OMNI_CONTACT_FORM_DIR', plugin_dir_path(__FILE__));
 define('OMNI_CONTACT_FORM_URI', plugin_dir_url(__FILE__));
+
+/*
+|
+| Add autoloader
+| Implementation by Justin Tadlock
+|
+| @since 0.3.0
+| @see http://justintadlock.com/archives/2018/12/14/php-namespaces-for-wordpress-developers
+|
+*/
+spl_autoload_register(function($class) {
+	$namespace = 'OmniContactForm\\';
+	$path      = 'src';
+
+	/*
+	|
+	| Bail if class is not in namespace
+	|
+	*/
+	if (strpos($class, $namespace) !== 0) {
+		return;
+	}
+
+	/*
+	|
+	| Remove namespace
+	|
+	*/
+	$class = str_replace($namespace, '', $class);
+
+	/*
+	|
+	| Build the filename
+	|
+	*/
+	$file = realpath(__DIR__ . "/{$path}");
+	$file = $file . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+
+	/*
+	|
+	| If the file exists for the class name, load it
+	|
+	*/
+	if (file_exists($file)) {
+		include($file);
+	}
+});
 
 /**
  *

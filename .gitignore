@@ -1,6 +1,7 @@
 #
 # Composer
 #
+/vendor/
 
 #
 # Node.js packages
