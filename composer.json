@@ -5,7 +5,13 @@
 		}
 	},
 	"require-dev": {
-		"vimeo/psalm": "^3.2",
-		"giacocorsiglia/wordpress-stubs": "^5.1"
+		"phpstan/phpstan": "^2.0",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"phpstan/extension-installer": "^1.4"
+	},
+	"config": {
+		"allow-plugins": {
+			"phpstan/extension-installer": true
+		}
 	}
 }

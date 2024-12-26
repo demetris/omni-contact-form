@@ -1,0 +1,6 @@
+parameters:
+  level: 5
+  bootstrapFiles:
+    - omni-contact-form.php
+  paths:
+    - src
