@@ -6,19 +6,7 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita5f2eb8e247a8bc2880ccbe59be07d29
 {
-    public static $files = array (
-        '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'SzepeViktor\\PHPStan\\WordPress\\' => 30,
-        ),
-        'P' => 
-        array (
-            'PHPStan\\ExtensionInstaller\\' => 27,
-        ),
         'O' => 
         array (
             'OmniContactForm\\' => 16,
@@ -26,14 +14,6 @@ class ComposerStaticInita5f2eb8e247a8bc2880ccbe59be07d29
     );
 
     public static $prefixDirsPsr4 = array (
-        'SzepeViktor\\PHPStan\\WordPress\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/szepeviktor/phpstan-wordpress/src',
-        ),
-        'PHPStan\\ExtensionInstaller\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpstan/extension-installer/src',
-        ),
         'OmniContactForm\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
