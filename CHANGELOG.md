@@ -6,6 +6,10 @@ Omni Contact Form: Changelog
 ##  0.5.0 – 2024-12-xx
 
 -   Updated latest WordPress version the plugin has been tested with (6.7.1).
+-   Removed some sensitive info (form CC and TO) from global JS variable.
+-   Switched from spl_autoload_register to Composer for autoloading.
+-   Switched from Psalm to PHPStan for static analysis.
+-   Switched from Gulp to Vite (Rollup) for building assets.
 
 
 ##  0.4.5 – 2021-04-09
