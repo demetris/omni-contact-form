@@ -1,6 +1,11 @@
 {
-    "require-dev": {
-        "vimeo/psalm": "^3.2",
-        "giacocorsiglia/wordpress-stubs": "^5.1"
-    }
+	"autoload": {
+		"psr-4": {
+			"OmniContactForm\\": "src/"
+		}
+	},
+	"require-dev": {
+		"vimeo/psalm": "^3.2",
+		"giacocorsiglia/wordpress-stubs": "^5.1"
+	}
 }
