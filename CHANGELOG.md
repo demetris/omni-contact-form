@@ -3,6 +3,11 @@ Omni Contact Form: Changelog
 ================================================================================
 
 
+##  0.5.0 – 2024-12-xx
+
+-   Updated latest WordPress version the plugin has been tested with (6.7.1).
+
+
 ##  0.4.5 – 2021-04-09
 
 -   Added missing shortcode field to README (whether to include prompt message).

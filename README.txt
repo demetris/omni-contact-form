@@ -7,7 +7,7 @@ Plugin URI:         https://github.com/demetris/omni-contact-form
 Tags:               form, contact-form, simple, easy
 Version:            0.4.5
 Requires at least:  4.9.9
-Tested up to:       5.7
+Tested up to:       6.7
 Requires PHP:       7.0
 Stable tag:
 License:            GPL-2.0
