@@ -31,7 +31,7 @@ Requirements
     -   WordPress REST API (part of WordPress since version 4.7)
 -   Browser
     -   JavaScript (there is no fallback for browsers without JavaScript)
-    -   Version released after 2012
+    -   Version released after 2020
 
 
 
